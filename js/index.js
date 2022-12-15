@@ -1,12 +1,10 @@
 const markdownResultElement = document.querySelector("#markdown-result");
+// Подключаем и парсим localStorage
+const articles = JSON.parse(localStorage.getItem('articles'));
+const article = articles[articles.length - 1];
 
-const line = `## Заголовок статьи
 
-Далеко-далеко за [словесными горами в стране](#!), гласных и согласных живут рыбные тексты. Использовало однажды гор семь, снова раз. Города большой безорфографичный меня.
-
-Lorem имени, продолжил своего реторический своих послушавшись грустный даль страну парадигматическая океана рыбными, рыбного переписывается, страна? Свой заголовок свое, он.
-
-`;
-
-let result = marked.marked(line);
+// Обновляем кода
+//substr - для показа количества контента от 0 диопазона до n
+let result = marked.marked(article.content.substr(0, 250) + "...");
 markdownResultElement.innerHTML = result;
