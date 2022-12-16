@@ -1,6 +1,7 @@
 const markdownResultElement = document.querySelector("#markdown-result");
 const allListElement = document.querySelector('#all-list');
 const articleListElement = document.querySelector('#article-list');
+const readAllButton = document.querySelector('#read-all');
 // Подключаем и парсим localStorage
 const articles = JSON.parse(localStorage.getItem('articles'));
 const article = articles[articles.length - 1];
@@ -32,3 +33,7 @@ for (let i = articles.length - 3; i < articles.length; i++) {
     articleListElement.innerHTML = str;
     
 }
+
+readAllButton.addEventListener('click', function(){
+    location.replace('./article.html?id=' + article.id);
+});
