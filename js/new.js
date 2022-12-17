@@ -25,7 +25,24 @@ Lorem имени, продолжил своего реторический св�
 
 Букв переписали, продолжил. Силуэт, путь текста журчит переписывается назад от всех его выйти однажды, бросил букв, путь несколько вскоре даже рукопись.
     `;
+    //Создадим редактор для код для статья
+    const getLocal = parseInt(location.search.substr(4));
+    let article = null;
+    const articles = JSON.parse(localStorage.getItem('articles'));
 
+    if (getLocal) {
+        
+        for (let i = 0; i < articles.length; i++) {
+            if(articles[i].id === getLocal){
+                article = articles[i];
+                titleInputElement.value = article.title;
+                markdownSourceElement.value = article.content
+
+            }
+            
+        }
+    }
+    
     // Создадим обработчик для markdownSource
     markdownSourceElement.addEventListener("keyup", function(){
         const result = marked.marked(markdownSourceElement.value);
@@ -34,18 +51,27 @@ Lorem имени, продолжил своего реторический св�
     });
     // Создадим обработчик для buttonSave
     buttonSave.addEventListener("click", function(){
-        // Создадим объект для получение навого статьи
-        const newArticle = {
-            id: 0,
-            title: titleInputElement.value,
-            content: markdownSourceElement.value
-        }
-        // Создаем парсинг для articles
-        const json = localStorage.getItem("articles");
-        const articles = JSON.parse(json);
+        //
+        if (getLocal) {
+            for (let i = 0; i < articles.length; i++) {
+                if(articles[i].id === getLocal){
+                    articles[i].title = titleInputElement.value;
+                    articles[i].content = markdownSourceElement.value;
+                }
+            }
+        }else{
+            // Создадим объект для получение навого статьи
+            const newArticle = {
+                id: 0,
+                title: titleInputElement.value,
+                content: markdownSourceElement.value
+            }
 
-        newArticle.id = articles.length + 1;
-        articles.push(newArticle);
+            newArticle.id = articles.length + 1;
+            articles.push(newArticle);
+        }
+
+        
         localStorage.setItem("articles", JSON.stringify(articles));
     })
 })();
