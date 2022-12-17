@@ -1,4 +1,5 @@
 const markdownResultElement = document.querySelector("#markdown-result");
+const editElementButton = document.querySelector("#edit-button");
 // 
 const getLocal = parseInt(location.search.substr(4));
 let article = null;
@@ -10,3 +11,7 @@ for (let i = 0; i < articles.length; i++) {
 }
 let result = marked.marked(article);
 markdownResultElement.innerHTML = result;
+
+editElementButton.addEventListener('click', function(){
+    location.replace('./new.html?id=' + getLocal);
+});

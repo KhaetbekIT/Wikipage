@@ -17,7 +17,7 @@ let str = '';
 for (let i = 0; i < articles.length; i++) {
     const currentIndexPost = articles[i];
     str = str + `
-    <li class="other-list__item"><a class="other-list__link" href="#">${currentIndexPost.title}</a></li>
+    <li class="other-list__item"><a class="other-list__link" href="article.html?id=${currentIndexPost.id}">${currentIndexPost.title}</a></li>
     <li class="other-list__item
     `;
     allListElement.innerHTML = str;
@@ -28,7 +28,7 @@ str = '';
 for (let i = articles.length - 3; i < articles.length; i++) {
     const current = articles[i];
   
-    str = str + `<li class="articles-list-item"><a href="article.html" class="articles-list-link">${current.title}</a></li>`;
+    str = str + `<li class="articles-list-item"><a href="article.html?id=${current.id}" class="articles-list-link">${current.title}</a></li>`;
 
     articleListElement.innerHTML = str;
     
