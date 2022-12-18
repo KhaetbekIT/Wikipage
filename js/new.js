@@ -71,8 +71,16 @@ Lorem имени, продолжил своего реторический св�
             articles.push(newArticle);
         }
 
-        
         localStorage.setItem("articles", JSON.stringify(articles));
+
+        if (getLocal) {
+            //Если id есть то надо изменить в эту гет
+            location.replace(`article.html?id=${getLocal}`);
+        }else{
+            //Если это новая статья то надо изменить страницу в основную
+            location.replace(`./index.html`);
+            
+        }
     })
 })();
     
