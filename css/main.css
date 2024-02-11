@@ -178,7 +178,6 @@ a:hover {
 	min-height: 400px;
 	font-family: sans-serif;
 	border: 1px solid #a2a9b1;
-	resize: none;
 }
 
 .form-textarea:focus {
